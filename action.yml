@@ -5,6 +5,9 @@ branding:
   icon: alert-circle
   color: blue
 inputs:
+  subdirectory:
+    description: 'Subdirectory to start executing from.'
+    required: false
   project:
     description: 'Optional project path.'
     required: false
