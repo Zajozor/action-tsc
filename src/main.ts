@@ -3,18 +3,13 @@ import { exec } from '@actions/exec';
 import { join } from 'path';
 
 async function run() {
-	const subdirectory = getInput('subdirectory');
 	const project = getInput('project');
 	const build = getInput('build');
 	const executable = getInput('executable');
 
-	if (subdirectory) {
-		process.chdir(subdirectory);
-	}
-
 	console.log(`##[add-matcher]${join(__dirname, '..', '.github', 'tsc.json')}`);
 	const args = [
-		`${join(process.cwd(), 'node_modules/.bin', executable)}`,
+		`${join(process.cwd(), project, 'node_modules/.bin', executable)}`,
 		'--noEmit',
 		'--noErrorTruncation',
 		'--pretty',
